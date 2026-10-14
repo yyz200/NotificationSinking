@@ -1,0 +1,27 @@
+# 构建产物（只保留 dist/ 里发布用的 APK）
+*.apk
+*.idsig
+!dist/*.apk
+
+# 签名文件：绝不入库
+*.keystore
+*.jks
+
+# 构建中间产物
+build/
+.gradle/
+local.properties
+*.class
+*.dex
+*.jar
+
+# 编辑器 / 系统
+.idea/
+*.iml
+.vscode/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 本机构建缓存
+app/build/

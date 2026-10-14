@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name=".NsApp"
+        android:allowBackup="false"
+        android:description="@string/module_description"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NotificationSinking">
+
+        <!-- 传统 Xposed 元数据（仅供旧框架识别；现代 API 用 android:label/android:description
+             与 META-INF/xposed/module.prop，不使用以下 meta-data） -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="@string/module_description" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="93" />
+
+        <!-- 模块设置界面（唯一可见入口） -->
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 配置跨进程通道（RemotePreferences 不可用时的降级方案）。
+             查询只读开放（仅四个开关数值，不含任何用户数据）；
+             insert/update/delete 在 Provider 内校验调用方 uid，仅允许模块自身进程。 -->
+        <provider
+            android:name=".PrefsProvider"
+            android:authorities="${applicationId}.prefs"
+            android:exported="true" />
+
+        <!-- 日志文件分享通道（ACTION_SEND 给微信/邮件等；仅本 App 私有目录，不导出） -->
+        <provider
+            android:name=".LogFileProvider"
+            android:authorities="${applicationId}.logs"
+            android:exported="false"
+            android:grantUriPermissions="true" />
+
+        <!-- libxposed service 桥梁（必须）：框架通过该 Provider 向模块 App 下发
+             XposedService，App 据此写入远程偏好（LSPosed 数据库），SystemUI 侧实时读取。
+             类来自 io.github.libxposed:service（已打包进 classes.dex）。 -->
+        <provider
+            android:name="io.github.libxposed.service.XposedProvider"
+            android:authorities="${applicationId}.XposedService"
+            android:exported="true" />
+    </application>
+
+</manifest>

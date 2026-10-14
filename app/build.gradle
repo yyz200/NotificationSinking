@@ -1,0 +1,39 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.notificationsinking'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.notificationsinking"
+        minSdk 27
+        targetSdk 36
+        versionCode 143
+        versionName "1.13.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    // libxposed api / service 以本地 jar 提供（见 tools/build_apk.ps1），不使用远程依赖，
+    // 因此本工程无需 Gradle 即可构建（aapt2 + javac + d8 + zipalign + apksigner）。
+}

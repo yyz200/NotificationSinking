@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">通知下沉</string>
+    <string name="module_description">ColorOS 16 锁屏 / AOD 通知下沉（iOS 风格），默认全关，配置实时生效。</string>
+    <string name="header_subtitle">ColorOS 16 锁屏 / AOD 通知下沉</string>
+    <string name="desc_summary">适配 OPPO Find X8 / ColorOS 16（Android 16）。所有 Hook 默认关闭；开启后修改配置即时生效，无需重启手机。</string>
+
+    <!-- 功能开关 -->
+    <string name="section_features">功能开关</string>
+    <string name="pill_on">已启用</string>
+    <string name="pill_off">未启用</string>
+    <string name="label_master">总开关</string>
+    <string name="sub_master">关闭时所有 Hook 立即卸载并还原布局</string>
+    <string name="label_lockscreen">锁屏通知下沉</string>
+    <string name="sub_lockscreen">锁屏通知整体下移，避开大时钟</string>
+    <string name="label_aod">AOD 息屏通知下沉</string>
+    <string name="sub_aod">息屏显示的通知同样下移</string>
+    <string name="label_keep_clock">锁屏保持大时钟</string>
+    <string name="keep_clock_hint">来消息仍保持大时钟，通知叠在其下方</string>
+    <string name="label_fold">锁屏通知折叠</string>
+    <string name="fold_hint">多条通知只显示最上面 2 条，其余收进系统的“+N 条”汇总行；条数可用 fold_max 调整</string>
+
+    <!-- 下沉距离 -->
+    <string name="section_sink">下沉距离</string>
+    <string name="sink_min">0 dp</string>
+    <string name="sink_max">1200 dp</string>
+    <string name="sink_value_fmt">%1$d dp</string>
+    <string name="sink_value_default">40 dp</string>
+
+    <!-- 实时预览 -->
+    <string name="section_preview">实时预览</string>
+    <string name="preview_clock">09:41</string>
+    <string name="preview_title">示例通知</string>
+    <string name="preview_text">这是一条模拟的通知内容，用于预览下沉效果。</string>
+    <string name="preview_time">刚刚</string>
+    <string name="preview_clamped_fmt">预览已到可视边界（约 %1$d dp / %2$d dp）；实际锁屏以系统布局为准。</string>
+    <string name="preview_ok_fmt">预览按当前下沉值（%1$d dp）显示。</string>
+
+    <!-- 锁屏通知显示方式 -->
+    <string name="section_lock_style">锁屏通知显示方式</string>
+    <string name="lock_style_hint" formatted="false">实测：0 = 列表/堆叠（推荐，通知与音乐卡片同屏）；1 / 2 = 胶囊样式（锁屏上更隐蔽）。切换后会自动重启作用域。</string>
+    <string name="style_auto">跟随系统</string>
+    <string name="style_0">列表/堆叠</string>
+    <string name="style_1">胶囊 1</string>
+    <string name="style_2">胶囊 2</string>
+    <string name="style_status_fmt" formatted="false">当前：%1$s（系统键 lock_screen_notification_style=%2$s）</string>
+    <string name="toast_style_applied">已设置显示方式 %1$s，正在重启作用域…</string>
+
+    <!-- 作用域 -->
+    <string name="section_scope">作用域管理</string>
+    <string name="scope_desc">在 LSPosed 管理器中勾选「系统界面」「息屏」（可选 ExSystemUI）。修改作用域或更新模块后，点下方按钮重启相关进程即可，无需重启手机。</string>
+    <string name="btn_restart_scope">重启 SystemUI / AOD 作用域</string>
+    <string name="dlg_restart_confirm_title">确认重启作用域</string>
+    <string name="dlg_restart_confirm_msg">将重启 SystemUI / AOD 进程，屏幕会短暂黑一下并回到锁屏，确定继续吗？</string>
+    <string name="dlg_restart_failed_title">重启失败</string>
+    <string name="dlg_restart_failed_msg">未检测到 Root 授权（首次使用需在 Root 管理器放行本 App）。\n\n也可以手动执行：\nadb shell su -c \'pkill -f com.android.systemui\'</string>
+    <string name="toast_restart_sending">正在发送重启指令…</string>
+    <string name="toast_restart_done">已重启作用域进程，稍候即可生效</string>
+
+    <!-- 诊断 -->
+    <string name="section_diag">诊断中心</string>
+    <string name="diag_desc">「精简日志」可直接截图（短）；「导出日志为 txt」会写入文件，可分享到微信或电脑，比长截图可靠。</string>
+    <string name="diag_status_fmt" formatted="false">当前配置：总开关 %1$s · 下沉 %2$d dp · 锁屏 %3$s · AOD %4$s</string>
+    <string name="btn_view_logs">查看模块日志</string>
+    <string name="btn_restart_and_logs">重启并导出日志</string>
+    <string name="btn_brief_logs">精简日志</string>
+    <string name="btn_export_logs">导出日志为 txt</string>
+    <string name="dlg_logs_title">模块日志</string>
+    <string name="dlg_brief_title">精简日志</string>
+    <string name="dlg_export_title">日志已导出</string>
+    <string name="dlg_export_msg">文件已写入：\n%1$s\n\n%2$s\n\n可点「分享」直接发到微信或电脑，也可用文件管理器到 Download 目录取。</string>
+    <string name="btn_share">分享</string>
+    <string name="btn_copy_path">复制路径</string>
+    <string name="toast_exporting">正在采集日志并导出…</string>
+    <string name="toast_export_failed">导出失败：%1$s</string>
+    <string name="toast_path_copied">路径已复制</string>
+    <string name="toast_no_share">该副本不在 App 目录，无法分享，请用文件管理器取</string>
+    <string name="dlg_logs_empty">未获取到任何日志。最可能的原因：模块未被 LSPosed 注入。请确认 LSPosed 中模块已「启用」且勾选了作用域，并确认 LSPosed 版本支持现代入口（targetApiVersion=102）。可先点「重启作用域并抓取日志」再试。</string>
+
+    <!-- 提示 -->
+    <string name="hint_default">提示：修改配置立即生效（ContentProvider 实时同步）。</string>
+    <string name="hint_applied">下沉效果已实时应用到锁屏 / AOD 通知。</string>
+    <string name="hint_disabled">总开关已关闭：所有 Hook 已卸载并还原布局。</string>
+
+    <string name="version_footer">通知下沉 v1.13.0 · 全新界面</string>
+</resources>

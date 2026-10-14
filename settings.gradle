@@ -1,0 +1,20 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // Xposed 传统 API（de.robv.android.xposed:api:82）仅发布在 JCenter（已关闭）及其镜像，
+        // 使用阿里云 JCenter 镜像获取；libxposed 101+（Maven Central）只含新 API，不含 de.robv 类
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    }
+}
+
+rootProject.name = "NotificationSinking"
+include ':app'

@@ -1,0 +1,5 @@
+// 通知下沉 —— LSPosed 模块（ColorOS 16 / Android 16）
+// 构建要求：JDK 17+、Gradle 8.11.1+（见 gradle/wrapper/gradle-wrapper.properties）
+plugins {
+    id 'com.android.application' version '8.9.2' apply false
+}
